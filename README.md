@@ -1,0 +1,1 @@
+# mit_sutsz_kis_szucs
