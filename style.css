@@ -24,8 +24,10 @@ body {
     background-color: var(--blue);
     padding: 12px 20px;
     border-radius: 8px;
+    margin: auto;
     margin-bottom: 25px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 80%;
 }
 
 .main-nav a {
@@ -42,7 +44,7 @@ body {
 
 .logo-link .sub-text {
     display: block;
-    margin-left: 15px;
+    margin-left: 50px;
 }
 
 .nav-buttons {
@@ -219,48 +221,43 @@ body {
 
 /* --- MOBILOS ELRENDEZÉS (768px ALATT) --- */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    .main-nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding: 15px 10px;
+    /* Logó egy sorba rendezése mobilon */
+    .logo-link {
+        font-size: 1rem;
+        white-space: nowrap; /* Megakadályozza az automatikus tördelést */
         text-align: center;
     }
 
-    /* Mobilon elrejtjük a sima linket, hogy csak a logó és a gombok maradjanak */
-    .nav-link {
+    /* A soremelés (<br>) eltüntetése mobilon */
+    .logo-link br {
         display: none;
     }
 
+    /* Az alsó szövegrész egymás mellé simítása */
     .logo-link .sub-text {
-        margin-left: 0;
+        display: inline;
+        margin-left: 5px; /* Kis szóköz a két szó között */
+    }
+
+    /* A navigáció mobilos igazítása */
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 10px;
     }
 
     .nav-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        gap: 8px;
     }
 
     .nav-btn {
-        flex: 1;
-        padding: 10px 5px;
-        font-size: 13px;
+        padding: 8px 4px;
+        font-size: 11px;
         text-align: center;
-    }
-
-    #container {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row {
-        flex-direction: column;
-        gap: 0;
     }
 }
 /* --- KATEGÓRIA MENÜ STÍLUS --- */
@@ -272,7 +269,9 @@ body {
     background-color: var(--blue);
     padding: 10px;
     border-radius: 8px;
+    margin: auto;
     margin-bottom: 20px;
+    width: 70%;
 }
 
 .cat-filter-btn {

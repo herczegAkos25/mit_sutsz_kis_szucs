@@ -42,9 +42,9 @@ function ReceptekIde() {
         var cim = document.createElement('div');
         var nehezseg = document.createElement('span');
 
-        kep.innerHTML = receptek[index].kepek.length > 0 
-            ? `<img src="${receptek[index].kepek[0]}" alt="${receptek[index].nev}">` 
-            : '';
+        //kep.innerHTML = receptek[index].kepek.length > 0 
+        //    ? `<img src="${receptek[index].kepek[0]}" alt="${receptek[index].nev}">` 
+        //    : '';
             
         cim.innerHTML = receptek[index].nev;
         nehezseg.innerHTML = receptek[index].nehezseg || "Átlagos";

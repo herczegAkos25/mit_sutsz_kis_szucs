@@ -148,7 +148,7 @@
             "lisztmentes",
             "sütemény"
         ],
-        "image_path": "Images/recipes/citromos-turos-pite-liszt-nelkul.webp",
+        "image_path": "Images/citromos-turos-pite-liszt-nelkul.webp",
         "ingredients": [
             {
                 "group": "Alaphozzávalók",
@@ -237,6 +237,561 @@
                 "steps": [
                     "A masszát egy sütőpapírral kibélelt tepsibe öntjük.",
                     "180 °C-ra előmelegített sütőben 35-40 perc alatt pirosra sütjük, majd teljesen hagyjuk kihűlni tálalás előtt."
+                ]
+            }
+        ]
+    },
+    
+    {
+        "id": "gulyasleves",
+        "title": "Klasszikus gulyásleves",
+        "description": "Bőséges, gazdag hagyományos magyar leves marhahúsból, csipetkével és zöldségekkel.",
+        "category": "Leves",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 30,
+        "cook_time_minutes": 120,
+        "servings": 6,
+        "difficulty": "közepes",
+        "tags": ["marha", "leves", "hagyományos", "pörköltalap"],
+        "image_path": "Images/klasszikus-gulyasleves-2-scaled-gn_-N2.jpg",
+        "ingredients": [
+            {
+                "group": "Pörköltalap és hús",
+                "items": [
+                    {"name": "marhalábszár", "amount": 600, "unit": "g"},
+                    {"name": "vöröshagyma", "amount": 2, "unit": "db"},
+                    {"name": "sertészsír", "amount": 2, "unit": "evőkanál"},
+                    {"name": "fűszerpaprika", "amount": 2, "unit": "evőkanál"},
+                    {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
+                    {"name": "köménymag", "amount": 1, "unit": "teáskanál"},
+                    {"name": "só, bors", "amount": null, "unit": "ízlés szerint"}
+                ]
+            },
+            {
+                "group": "Zöldségek",
+                "items": [
+                    {"name": "sárgarépa", "amount": 2, "unit": "db"},
+                    {"name": "petrezselyemgyökér", "amount": 1, "unit": "db"},
+                    {"name": "burgonya", "amount": 400, "unit": "g"},
+                    {"name": "TV paprika", "amount": 1, "unit": "db"},
+                    {"name": "paradicsom", "amount": 1, "unit": "db"}
+                ]
+            },
+            {
+                "group": "Csipetke",
+                "items": [
+                    {"name": "finomliszt", "amount": 80, "unit": "g"},
+                    {"name": "tojás", "amount": 1, "unit": "db"},
+                    {"name": "só", "amount": 1, "unit": "csipet"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Pörköltalap",
+                "steps": [
+                    "A finomra vágott hagymát a zsíron üvegesre pirítjuk.",
+                    "Lehúzzuk a tűzről, rászórjuk a fűszerpaprikát, átkeverjük, majd hozzáadjuk a kockázott marhahúst és a zúzott fokhagymát.",
+                    "Mellédobjuk a kockázott paprikát és paradicsomot, sózzuk, köménnyel fűszerezzük, majd kevés vízzel felöntve, lefedve puhára pároljuk."
+                ]
+            },
+            {
+                "section": "Zöldségek és főzés",
+                "steps": [
+                    "Amikor a hús majdnem puha, hozzáadjuk a felkarikázott sárgarépát, petrezselyemgyökeret és a kockázott krumplit.",
+                    "Felöntjük kb. 1.5-2 liter vízzel, és addig főzzük, amíg minden zöldség megpuhul."
+                ]
+            },
+            {
+                "section": "Csipetke",
+                "steps": [
+                    "A lisztből, tojásból és csipet sóból víz nélkül kemény tésztát gyúrunk.",
+                    "Lisztbe mártott kézzel kis darabokat csipkedünk belőle, és a kész, gyöngyöző levesbe főzzük pár perc alatt."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "brassoi-aproporcolt",
+        "title": "Brassói aprópecsenye",
+        "description": "Szaftos sertéshús kockák ropogós fokhagymás sült burgonyával összerázva.",
+        "category": "Főétel",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 40,
+        "servings": 4,
+        "difficulty": "könnyű",
+        "tags": ["sertéshús", "fokhagyma", "krumpli", "brassói"],
+        "image_path": "Images/szaftos-brassoi-apropecsenye.jpeg",
+        "ingredients": [
+            {
+                "group": "Hús és pác",
+                "items": [
+                    {"name": "sertésszűz vagy comb", "amount": 800, "unit": "g"},
+                    {"name": "kolozsvári szalonna", "amount": 100, "unit": "g"},
+                    {"name": "fokhagyma", "amount": 6, "unit": "gerezd"},
+                    {"name": "sertészsír", "amount": 2, "unit": "evőkanál"},
+                    {"name": "fűszerpaprika", "amount": 1, "unit": "teáskanál"},
+                    {"name": "só, őrölt feketebors", "amount": null, "unit": "ízlés szerint"}
+                ]
+            },
+            {
+                "group": "Köret",
+                "items": [
+                    {"name": "burgonya", "amount": 1000, "unit": "g"},
+                    {"name": "étolaj (a sütéshez)", "amount": 500, "unit": "ml"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Hús elkészítése",
+                "steps": [
+                    "A szalonnát kis kockákra vágjuk és a zsíron kiolvasztjuk a zsírját.",
+                    "Rádobjuk a csíkokra vagy kockákra vágott sertéshúst, és magas lángon fehéredésig pirítjuk.",
+                    "Sózzuk, borsozzuk, hozzáadjuk a fűszerpaprikát és a zúzott fokhagyma felét, majd fedő alatt, saját szaftjában puhára pároljuk.",
+                    "A végén fedő nélkül zsírjára sütjük, és belekeverjük a maradék zúzott fokhagymát."
+                ]
+            },
+            {
+                "section": "Köret és összeállítás",
+                "steps": [
+                    "A krumplit megpucoljuk, apró kockákra vágjuk, és bő, forró olajban aranybarnára, ropogósra sütjük.",
+                    "A kisült krumplit lecsöpögtetjük, majd még forrón összeforgatjuk a szaftos fokhagymás hússal."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "tejfölos-csirkepaprikas",
+        "title": "Tejfölös csirkepaprikás",
+        "description": "Szaftos csirkecomboly a legfinomabb tejfölös-paprikás mártásban, friss galuskával tálalva.",
+        "category": "Főétel",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 50,
+        "servings": 4,
+        "difficulty": "közepes",
+        "tags": ["csirke", "tejföl", "galuska", "paprikás"],
+        "image_path": "Images/37126861_266b9316e5bf3.2e16d0ba.format-jpeg.fill-600x600.jpg",
+        "ingredients": [
+            {
+                "group": "Paprikás alap és hús",
+                "items": [
+                    {"name": "csirkecomb (felső vagy alsó)", "amount": 4, "unit": "db"},
+                    {"name": "vöröshagyma", "amount": 2, "unit": "db"},
+                    {"name": "zsír vagy étolaj", "amount": 2, "unit": "evőkanál"},
+                    {"name": "fűszerpaprika", "amount": 2, "unit": "evőkanál"},
+                    {"name": "TV paprika", "amount": 1, "unit": "db"},
+                    {"name": "paradicsom", "amount": 1, "unit": "db"},
+                    {"name": "só, bors", "amount": null, "unit": "ízlés szerint"}
+                ]
+            },
+            {
+                "group": "Mártás habarása",
+                "items": [
+                    {"name": "tejföl (20%-os)", "amount": 200, "unit": "g"},
+                    {"name": "finomliszt", "amount": 1, "unit": "evőkanál"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Pörköltalap és szaft",
+                "steps": [
+                    "A finomra vágott hagymát a zsíron üvegesre pirítjuk.",
+                    "A tűzről levéve belekeverjük a pirospaprikát, hozzátesszük a felkockázott paprikát, paradicsomot és a csirkecombokat.",
+                    "Sózzuk, borsozzuk, kevés vízzel felöntjük, és lefedve puha szaftosra főzzük."
+                ]
+            },
+            {
+                "section": "Mártás befejezése",
+                "steps": [
+                    "A megfőtt húsokat kiemeljük a szaftból.",
+                    "A tejfölt elkeverjük a liszttel és kevés meleg szafttal (hőkiegyenlítés), majd a pörköltalaphoz öntjük.",
+                    "Összeforraljuk a selymes mártást, majd visszatesszük bele a csirkecombokat."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "somloi-galuska",
+        "title": "Klasszikus Somlói galuska",
+        "description": "Háromféle piskóta csokiöntettel, dióbéllel, mazsolával és tejszínhabbal rétegezve.",
+        "category": "Desszert",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 45,
+        "cook_time_minutes": 25,
+        "servings": 8,
+        "difficulty": "nehéz",
+        "tags": ["csoki", "piskóta", "tejszínhab", "klasszikus", "sütemény"],
+        "image_path": "Images/hero-image.869568c749fcaa74.webp",
+        "ingredients": [
+            {
+                "group": "Piskóták (sima, kakaós, diós)",
+                "items": [
+                    {"name": "tojás", "amount": 6, "unit": "db"},
+                    {"name": "porcukor", "amount": 120, "unit": "g"},
+                    {"name": "finomliszt", "amount": 120, "unit": "g"},
+                    {"name": "holland kakaópor", "amount": 1, "unit": "evőkanál"},
+                    {"name": "darált dió", "amount": 2, "unit": "evőkanál"},
+                    {"name": "sütőpor", "amount": 0.5, "unit": "csomag"}
+                ]
+            },
+            {
+                "group": "Szirup és krém",
+                "items": [
+                    {"name": "tej", "amount": 500, "unit": "ml"},
+                    {"name": "vaníliás pudingpor", "amount": 1, "unit": "csomag"},
+                    {"name": "rumaroma vagy rum", "amount": 2, "unit": "evőkanál"},
+                    {"name": "mazsola", "amount": 50, "unit": "g"},
+                    {"name": "durvára vágott dió", "amount": 50, "unit": "g"}
+                ]
+            },
+            {
+                "group": "Csokiöntet és díszítés",
+                "items": [
+                    {"name": "étcsokoládé", "amount": 100, "unit": "g"},
+                    {"name": "kakaópor", "amount": 1, "unit": "evőkanál"},
+                    {"name": "habtejszín", "amount": 200, "unit": "ml"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Piskótalapok sütése",
+                "steps": [
+                    "A tojásfehérjéket habbá verjük, a sárgájákat a cukorral kikavarjuk.",
+                    "A masszát 3 részre osztjuk: az egyikbe csak lisztet, a másikba kakaóport, a harmadikba darált diót keverünk.",
+                    "Három külön lapot sütünk belőlük 180 °C-on kb. 10-12 perc alatt."
+                ]
+            },
+            {
+                "section": "Krém és öntet",
+                "steps": [
+                    "A tejből és pudingporból sűrű vaníliakrémet főzünk.",
+                    "A csokoládét a kakaóporral és kevés vízzel csomómentes sűrű öntetté forraljuk."
+                ]
+            },
+            {
+                "section": "Összeállítás",
+                "steps": [
+                    "A lapokat egy tálba rétegezzük: diós lap, rumszirup, vaníliakrém, dió, mazsola, kakaós lap, majd a sima lap.",
+                    "Hűtőbe tesszük, majd tálaláskor kanállal galuskákat szaggatunk belőle, leöntjük csokival és tejszínhabbal díszítjük."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "szekelykaposzta",
+        "title": "Klasszikus székelykáposzta",
+        "description": "Laktató egytálétel savanyú káposztából és pörkölt sertéshúsból, bőséges tejföllel dúsítva.",
+        "category": "Főétel",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 20,
+        "cook_time_minutes": 90,
+        "servings": 6,
+        "difficulty": "közepes",
+        "tags": ["káposzta", "sertéshús", "tejföl", "egytálétel"],
+        "image_path": "Images/27b7b704d5044222ad872b49db7eeef3.webp",
+        "ingredients": [
+            {
+                "group": "Pörköltalap",
+                "items": [
+                    {"name": "sertéslapocka vagy comb", "amount": 800, "unit": "g"},
+                    {"name": "vöröshagyma", "amount": 2, "unit": "db"},
+                    {"name": "sertészsír", "amount": 2, "unit": "evőkanál"},
+                    {"name": "fűszerpaprika", "amount": 2, "unit": "evőkanál"},
+                    {"name": "fokhagyma", "amount": 2, "unit": "gerezd"},
+                    {"name": "só, bors, kömény", "amount": null, "unit": "ízlés szerint"}
+                ]
+            },
+            {
+                "group": "Káposzta és habarás",
+                "items": [
+                    {"name": "savanyú káposzta", "amount": 800, "unit": "g"},
+                    {"name": "tejföl (20%-os)", "amount": 250, "unit": "g"},
+                    {"name": "finomliszt", "amount": 1, "unit": "evőkanál"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Sertéspörkölt",
+                "steps": [
+                    "A hagymát zsíron üvegesre pirítjuk, majd a tűzről levéve rászórjuk a pirospaprikát.",
+                    "Hozzáadjuk a kockázott sertéshúst és zúzott fokhagymát, sózzuk, fűszerezzük, majd saját levében félig puhára pároljuk."
+                ]
+            },
+            {
+                "section": "Káposzta hozzákeverése",
+                "steps": [
+                    "Ha a savanyú káposzta túl savanyú, hideg vízben átmossuk, majd kicsit felvágjuk.",
+                    "A félig kész pörkölthöz keverjük a káposztát, felöntjük annyi vízzel, ami épp ellepi, és készre főzzük."
+                ]
+            },
+            {
+                "section": "Habarás",
+                "steps": [
+                    "A tejfölt elkeverjük a liszttel, behabarjuk vele az ételt, és még 5 percig összeforraljuk."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "turogomboc",
+        "title": "Pehelykönnyű túrógombóc",
+        "description": "Pehelykönnyű túrógombócok aranybarna pirított morzsában, porcukros tejföllel tálalva.",
+        "category": "Desszert",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 15,
+        "cook_time_minutes": 15,
+        "servings": 4,
+        "difficulty": "könnyű",
+        "tags": ["túró", "zsemlemorzsa", "tejföl", "édes"],
+        "image_path": "Images/konnyu-puha-turogomboc.jpeg",
+        "ingredients": [
+            {
+                "group": "Gombóc massza",
+                "items": [
+                    {"name": "tehéntúró", "amount": 500, "unit": "g"},
+                    {"name": "búzadara", "amount": 100, "unit": "g"},
+                    {"name": "tojás (M-es)", "amount": 2, "unit": "db"},
+                    {"name": "kezeletlen citromhéj", "amount": 0.5, "unit": "db"},
+                    {"name": "só", "amount": 1, "unit": "csipet"}
+                ]
+            },
+            {
+                "group": "Morzsa és tálalás",
+                "items": [
+                    {"name": "zsemlemorzsa", "amount": 150, "unit": "g"},
+                    {"name": "vaj", "amount": 50, "unit": "g"},
+                    {"name": "tejföl", "amount": 200, "unit": "g"},
+                    {"name": "porcukor", "amount": 2, "unit": "evőkanál"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Massza bekeverése és pihentetés",
+                "steps": [
+                    "A túrót áttörjük, összekeverjük a tojássárgájákkal, a búzadarával, citromhéjjal és a keményre vert tojáshabbal.",
+                    "Hűtőben legalább 1-2 órát pihentetjük, hogy a dara megduzzadjon."
+                ]
+            },
+            {
+                "section": "Morzsa és főzés",
+                "steps": [
+                    "A vajat megolvasztjuk, rászórjuk a zsemlemorzsát, és szép aranybarnára pirítjuk.",
+                    "A túrós alapból vizes kézzel gombócokat formázunk, majd gyöngyöző, enyhén sós vízben kifőzzük őket (miután feljöttek a víz tetejére, még 3-4 percig főzzük).",
+                    "Szűrőkanállal kiemeljük, lecsöpögtetjük, és az aranybarna zsemlemorzsába forgatjuk. Porcukros tejföllel tálaljuk."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "rakott-krumpli",
+        "title": "Hagyományos rakott krumpli",
+        "description": "Rétegezett főtt burgonya, kolbász és főtt tojás rengeteg tejföllel, sütőben pirítva.",
+        "category": "Főétel",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 30,
+        "cook_time_minutes": 40,
+        "servings": 4,
+        "difficulty": "könnyű",
+        "tags": ["krumpli", "kolbász", "tojás", "tejföl", "rakott"],
+        "image_path": "Images/klasszikus-rakott-krumpli.jpeg",
+        "ingredients": [
+            {
+                "group": "Alapanyagok",
+                "items": [
+                    {"name": "burgonya", "amount": 1200, "unit": "g"},
+                    {"name": "tojás", "amount": 6, "unit": "db"},
+                    {"name": "füstölt kolbász", "amount": 200, "unit": "g"},
+                    {"name": "tejföl (20%-os)", "amount": 400, "unit": "g"},
+                    {"name": "vaj (a tepsit kikenni)", "amount": 20, "unit": "g"},
+                    {"name": "só, bors", "amount": null, "unit": "ízlés szerint"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Előkészítés",
+                "steps": [
+                    "A burgonyát héjában, sós vízben megfőzzük. A tojásokat keményre főzzük.",
+                    "Ha kihűltek, meghámozzuk és felkarikázzuk őket. A kolbászt szintén vékonyra szeleteljük."
+                ]
+            },
+            {
+                "section": "Rétegezés és sütés",
+                "steps": [
+                    "Egy tepsit vagy jénait kivajazunk.",
+                    "Az aljára egy réteg krumplit fektetünk, sózzuk, majd eloszlatjuk rajta a tojásszeleteket, kolbászt és meglocsoljuk tejföllel.",
+                    "A rétegezést addig folytatjuk, amíg a hozzávalók elfynak (a tetejére krumpli kerüljön).",
+                    "A tetejét megkenjük a maradék tejföllel, és 180 °C-os sütőben kb. 35-40 perc alatt pirosra sütjük."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "palacsinta-alaprecept",
+        "title": "Békebeli hagyományos palacsinta",
+        "description": "Vékony, puha, szakadásmentes palacsintatészta, amit tetszés szerint tölthetsz lekvárral vagy túróval.",
+        "category": "Desszert",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 20,
+        "servings": 4,
+        "difficulty": "könnyű",
+        "tags": ["édes", "palacsinta", "alaprecept"],
+        "image_path": "Images/palacsinta-alaprecept.jpg",
+        "ingredients": [
+            {
+                "group": "Tészta",
+                "items": [
+                    {"name": "finomliszt", "amount": 200, "unit": "g"},
+                    {"name": "tojás", "amount": 2, "unit": "db"},
+                    {"name": "tej", "amount": 300, "unit": "ml"},
+                    {"name": "szénsavas ásványvíz", "amount": 200, "unit": "ml"},
+                    {"name": "étolaj", "amount": 2, "unit": "evőkanál"},
+                    {"name": "só", "amount": 1, "unit": "csipet"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Tészta bekeverése",
+                "steps": [
+                    "A lisztből, tojásokból, csipet sóból és tejszínből/tejből csomómentes sűrű tésztát keverünk.",
+                    "Hozzáadjuk az ásványvizet és az olajat, majd 15-20 percet pihentetjük."
+                ]
+            },
+            {
+                "section": "Sütés",
+                "steps": [
+                    "Egy palacsintasütőt felforrósítunk, vékonyan megkenjük olajjal.",
+                    "Egy merőkanálnyi tésztát oszlatunk el benne, majd mindkét oldalát aranysárgára sütjük."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "harcsapaprikas-turos-csuszaval",
+        "title": "Harcsapaprikás túrós csuszával",
+        "description": "Omlós harcsakockák selymes tejfölös mártásban, pirított szalonnás túrós tésztával ágyazva.",
+        "category": "Főétel",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 25,
+        "cook_time_minutes": 25,
+        "servings": 4,
+        "difficulty": "közepes",
+        "tags": ["hal", "tészta", "túró", "szalonna", "paprikás"],
+        "image_path": "Images/klasszikus-harcsapaprikas-hazi-turos-csuszaval.jpeg",
+        "ingredients": [
+            {
+                "group": "Harcsapaprikás",
+                "items": [
+                    {"name": "harcsafilé", "amount": 800, "unit": "g"},
+                    {"name": "vöröshagyma", "amount": 1, "unit": "db"},
+                    {"name": "fűszerpaprika", "amount": 1.5, "unit": "evőkanál"},
+                    {"name": "TV paprika", "amount": 1, "unit": "db"},
+                    {"name": "paradicsom", "amount": 1, "unit": "db"},
+                    {"name": "tejföl", "amount": 200, "unit": "g"},
+                    {"name": "zsír", "amount": 2, "unit": "evőkanál"}
+                ]
+            },
+            {
+                "group": "Túrós csusza",
+                "items": [
+                    {"name": "csuszatészta", "amount": 400, "unit": "g"},
+                    {"name": "tehéntúró", "amount": 250, "unit": "g"},
+                    {"name": "tejföl", "amount": 150, "unit": "g"},
+                    {"name": "kolozsvári szalonna", "amount": 150, "unit": "g"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Harcsapaprikás",
+                "steps": [
+                    "A kockázott hagymát zsíron megpirítjuk, rászórjuk a fűszerpaprikát, a kockázott paprikát és paradicsomot.",
+                    "Összefőzzük az alapját, majd hozzáadjuk a felkockázott harcsafilét és pár perc alatt óvatosan készre pároljuk.",
+                    "Belekeverjük a tejfölt, összeforraljuk, majd levesszük a tűzről."
+                ]
+            },
+            {
+                "section": "Túrós csusza köret",
+                "steps": [
+                    "A szalonnát kockákra vágjuk és ropogósra sütjük.",
+                    "A csuszatésztát sós vízben kifőzzük, leszűrjük, hozzákeverjük a túrót, tejfölt és a kisütött szalonna zsírját meg pörcét.",
+                    "A túrós csuszát a szaftos harcsapaprikással tálaljuk."
+                ]
+            }
+        ]
+    },
+    {
+        "id": "mezes-kremes",
+        "title": "Hagyományos mézes krémes",
+        "description": "Omlós mézes lapok finom grízes krémrecepttel és selymes csokoládémázzal a tetején.",
+        "category": "Desszert",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 40,
+        "cook_time_minutes": 20,
+        "servings": 10,
+        "difficulty": "nehéz",
+        "tags": ["méz", "sütemény", "csoki", "ünnepi"],
+        "image_path": "Images/mezes-kremes-mezes-teszta-recept.avif",
+        "ingredients": [
+            {
+                "group": "Mézes lapok",
+                "items": [
+                    {"name": "finomliszt", "amount": 450, "unit": "g"},
+                    {"name": "termelői méz", "amount": 3, "unit": "evőkanál"},
+                    {"name": "porcukor", "amount": 150, "unit": "g"},
+                    {"name": "tojás", "amount": 1, "unit": "db"},
+                    {"name": "vaj", "amount": 50, "unit": "g"},
+                    {"name": "szódabikarbóna", "amount": 1, "unit": "teáskanál"}
+                ]
+            },
+            {
+                "group": "Grízes krém",
+                "items": [
+                    {"name": "tej", "amount": 500, "unit": "ml"},
+                    {"name": "búzadara", "amount": 100, "unit": "g"},
+                    {"name": "vaj", "amount": 200, "unit": "g"},
+                    {"name": "porcukor", "amount": 150, "unit": "g"},
+                    {"name": "sárgabarack lekvár", "amount": 150, "unit": "g"}
+                ]
+            },
+            {
+                "group": "Csokimáz",
+                "items": [
+                    {"name": "étcsokoládé", "amount": 100, "unit": "g"},
+                    {"name": "étolaj", "amount": 1, "unit": "evőkanál"}
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Mézes lapok sütése",
+                "steps": [
+                    "A mézet, vaj t, cukrot és tojást gőz felett összeforraljuk, majd a szódabikarbónás liszthez keverjük és tésztává gyúrjuk.",
+                    "A tésztát 4 egyenlő részre osztjuk, vékonyra nyújtjuk, és tepsiháton 180 °C-on 6-8 perc alatt aranybarnára sütjük a lapokat."
+                ]
+            },
+            {
+                "section": "Grízes krém",
+                "steps": [
+                    "A tejből és búzadarából sűrű tejbegrízt főzünk, majd hagyjuk teljesen kihűlni.",
+                    "A puha vajat a porcukorral habosra keverjük, majd kanalanként ledolgozzuk a kihűlt grízzel."
+                ]
+            },
+            {
+                "section": "Összeállítás",
+                "steps": [
+                    "Az első lapra rákenjük a krém felét, erre jön a második lap.",
+                    "A második lapot megkenjük sárgabaracklekvárral, rátesszük a harmadik lapot, amire a krém másik fele kerül.",
+                    "Belefedjük a negyedik lappal, leöntjük az olajjal olvasztott csokoládéval, és egy éjszakát állni hagyjuk, hogy a lapok megpuhuljanak."
                 ]
             }
         ]
