@@ -1,8 +1,14 @@
+:root{
+    --blue:#40405E;
+    --light-blue:#dee0ef;
+    --font:white;
+}
+
 body{
-    background-color: black;
+    background-color: var(--light-blue);
 }
 nav{
-    background-color: blueviolet;
+    background-color: var(--blue);
     text-align: center;
     height: 50px;
     display: grid;
@@ -15,7 +21,7 @@ nav>a{
     text-decoration: none;
     font-size: large;
     font-weight: bold;
-    color: black;
+    color: var(--font);
     border-radius: 5px;
 }
 nav>a:hover{

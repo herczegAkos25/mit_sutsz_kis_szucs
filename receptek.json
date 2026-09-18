@@ -1,0 +1,244 @@
+[
+    {
+        "id": "hortobagyi-husos-palacsinta",
+        "title": "Hortobágyi húsos palacsinta",
+        "description": "Klasszikus magyar előétel szaftos pörkölttel töltött palacsintából, tejfölös-paprikás mártással.",
+        "category": "Főétel",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 30,
+        "cook_time_minutes": 45,
+        "servings": 4,
+        "difficulty": "közepes",
+        "tags": [
+            "húsos",
+            "palacsinta",
+            "pörkölt",
+            "hagyományos"
+        ],
+        "image_path": "Images/hortobagyi-palacsinta-hus.webp",
+        "ingredients": [
+            {
+                "group": "Palacsintatészta",
+                "items": [
+                    {
+                        "name": "finomliszt",
+                        "amount": 200,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "tojás",
+                        "amount": 2,
+                        "unit": "db"
+                    },
+                    {
+                        "name": "tej",
+                        "amount": 300,
+                        "unit": "ml"
+                    },
+                    {
+                        "name": "szénsavas ásványvíz",
+                        "amount": 100,
+                        "unit": "ml"
+                    },
+                    {
+                        "name": "só",
+                        "amount": 1,
+                        "unit": "csipet"
+                    },
+                    {
+                        "name": "étolaj (a sütéshez)",
+                        "amount": 2,
+                        "unit": "evőkanál"
+                    }
+                ]
+            },
+            {
+                "group": "Töltelék és mártás",
+                "items": [
+                    {
+                        "name": "darált sertés- vagy borjúhús",
+                        "amount": 500,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "vöröshagyma",
+                        "amount": 1,
+                        "unit": "db"
+                    },
+                    {
+                        "name": "étolaj / zsír",
+                        "amount": 2,
+                        "unit": "evőkanál"
+                    },
+                    {
+                        "name": "fűszerpaprika",
+                        "amount": 1.5,
+                        "unit": "evőkanál"
+                    },
+                    {
+                        "name": "TV paprika",
+                        "amount": 1,
+                        "unit": "db"
+                    },
+                    {
+                        "name": "paradicsom",
+                        "amount": 1,
+                        "unit": "db"
+                    },
+                    {
+                        "name": "tejföl",
+                        "amount": 200,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "finomliszt (a habaráshoz)",
+                        "amount": 1,
+                        "unit": "evőkanál"
+                    },
+                    {
+                        "name": "só, bors",
+                        "amount": null,
+                        "unit": "ízlés szerint"
+                    }
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Pörköltalap és hús",
+                "steps": [
+                    "A finomra vágott vöröshagymát az olajon vagy zsíron üvegesre pirítjuk.",
+                    "Lehúzzuk a tűzről, rászórjuk a fűszerpaprikát, majd hozzáadjuk a darált húst, a kockázott paprikát és paradicsomot.",
+                    "Sózzuk, borsozzuk, és kevés vízzel felöntve puhára főzzük a pörköltet."
+                ]
+            },
+            {
+                "section": "Palacsinta",
+                "steps": [
+                    "A lisztből, tojásból, tejből, ásványvízből és sóból csomómentes tésztát keverünk.",
+                    "A szokásosnál kissé vastagabb palacsintákat sütünk ki."
+                ]
+            },
+            {
+                "section": "Összeállítás",
+                "steps": [
+                    "A megsült húst leszűrjük, a szaftját félretesszük. A húst finomra daráljuk vagy felaprítjuk, és kevés szafttal összekeverjük.",
+                    "Megtöltjük a palacsintákat, a széleiket behajtva feltekerjük vagy batyuvá formázzuk őket.",
+                    "A maradék szafthoz hozzáadjuk a tejföllel elkevert lisztet, összeforraljuk, majd a palacsintákra öntve tálaljuk."
+                ]
+            }
+        ]
+        
+    },
+    {
+        "id": "citromos-turos-pite-liszt-nelkul",
+        "title": "Citromos-túrós pite liszt nélkül",
+        "description": "Könnyű, krémes és frissítő sütemény liszt hozzáadása nélkül, intenzív citromos ízzel.",
+        "category": "Desszert",
+        "cuisine": "Magyar",
+        "prep_time_minutes": 10,
+        "cook_time_minutes": 40,
+        "servings": 8,
+        "difficulty": "könnyű",
+        "tags": [
+            "túró",
+            "citrom",
+            "pite",
+            "gluténmentes",
+            "lisztmentes",
+            "sütemény"
+        ],
+        "image_path": "Images/recipes/citromos-turos-pite-liszt-nelkul.webp",
+        "ingredients": [
+            {
+                "group": "Alaphozzávalók",
+                "items": [
+                    {
+                        "name": "sovány túró",
+                        "amount": 250,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "tojás (M-es)",
+                        "amount": 5,
+                        "unit": "db"
+                    },
+                    {
+                        "name": "tejföl",
+                        "amount": 150,
+                        "unit": "g"
+                    },
+                    {
+                        "name": "vaníliás pudingpor",
+                        "amount": 2,
+                        "unit": "csomag"
+                    },
+                    {
+                        "name": "rizsdara",
+                        "amount": 4,
+                        "unit": "evőkanál"
+                    },
+                    {
+                        "name": "teavaj (olvasztott)",
+                        "amount": 2,
+                        "unit": "evőkanál"
+                    },
+                    {
+                        "name": "négyszeres erejű édesítőszer",
+                        "amount": 1,
+                        "unit": "evőkanál"
+                    },
+                    {
+                        "name": "mazsola",
+                        "amount": 1,
+                        "unit": "marék"
+                    },
+                    {
+                        "name": "kezeletlen citrom",
+                        "amount": 2,
+                        "unit": "db"
+                    },
+                    {
+                        "name": "vaníliaaroma",
+                        "amount": 1,
+                        "unit": "kávéskanál"
+                    },
+                    {
+                        "name": "sütőpor",
+                        "amount": 0.5,
+                        "unit": "csomag"
+                    },
+                    {
+                        "name": "fahéj",
+                        "amount": 1,
+                        "unit": "teáskanál"
+                    },
+                    {
+                        "name": "só",
+                        "amount": 1,
+                        "unit": "csipet"
+                    }
+                ]
+            }
+        ],
+        "instructions": [
+            {
+                "section": "Előkészítés és krém",
+                "steps": [
+                    "A tojásokat szétválasztjuk, a fehérjéket egy csipet sóval kemény habbá verjük.",
+                    "A tojássárgájákat elektromos habverővel kb. 5 perc alatt habosra keverjük az édesítőszerrel.",
+                    "Hozzáadjuk a citromok reszelt héját és az egyik átszűrt levét, az olvasztott vajat, a tejfölt, a fahéjat, a vaníliaaromát és a túrót (érdemes botmixerrel krémesíteni).",
+                    "Egy kis tálban összekeverjük a rizsdarát, a pudingport, a sütőport és az előzőleg beáztatott mazsolát, majd ezt fakanállal a túrós alapba forgatjuk.",
+                    "Végül óvatosan hozzáadjuk a keményre vert tojáshabot is."
+                ]
+            },
+            {
+                "section": "Sütés",
+                "steps": [
+                    "A masszát egy sütőpapírral kibélelt tepsibe öntjük.",
+                    "180 °C-ra előmelegített sütőben 35-40 perc alatt pirosra sütjük, majd teljesen hagyjuk kihűlni tálalás előtt."
+                ]
+            }
+        ]
+    }
+]
