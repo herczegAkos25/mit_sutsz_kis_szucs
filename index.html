@@ -1,25 +1,112 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>🍽️ Mit sütsz kis szűcs? 🍳</title>
 </head>
+
 <body>
-    <nav>
-        <a href="">Kategóriák</a>
-        <a href="">Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
-        <a href="">Feltöltés</a>
+    <nav class="main-nav">
+        <a href="#" class="logo-link">
+            Mit sütsz<br>
+            <span class="sub-text">kis szűcs</span>
+        </a>
+
+        <div class="nav-buttons">
+            <button id="categoriesBtn" class="nav-btn secondary-btn">📂 Kategóriák</button>
+            <button id="openModalBtn" class="nav-btn primary-btn">➕ Új recept</button>
+            <button id="downloadJsonBtn" class="nav-btn secondary-btn">📥 JSON</button>
+        </div>
     </nav>
-    <div id="container">
-        <div>dasdasd</div>
-        <div>dasdsad</div>
-        <div>dasdas</div>
-        <div>dasdasd</div>
-        <div>adasda</div>
-        <div>asdasd</div>
-        <div>dasdasd</div>
+
+    <!-- Kategória választó menü (alapból rejtve) -->
+    <div id="categoryMenu" class="category-menu" style="display: none;">
+        <button class="cat-filter-btn active" data-category="all">Összes</button>
+        <button class="cat-filter-btn" data-category="Főétel">Főétel</button>
+        <button class="cat-filter-btn" data-category="Desszert">Desszert</button>
     </div>
+
+    <!-- Modal Űrlap -->
+    <div id="recipeModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h2>Új recept hozzáadása</h2>
+            <form id="recipeForm">
+                <div class="form-group">
+                    <label for="title">Recept címe:</label>
+                    <input type="text" id="title" required placeholder="pl. Hortobágyi húsos palacsinta">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Rövid leírás:</label>
+                    <textarea id="description" required placeholder="Klasszikus magyar étel..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Kategória:</label>
+                        <input type="text" id="category" placeholder="pl. Főétel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cuisine">Konyha:</label>
+                        <input type="text" id="cuisine" placeholder="pl. Magyar" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prep_time">Előkészítés (perc):</label>
+                        <input type="number" id="prep_time" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cook_time">Főzési/Sütési idő (perc):</label>
+                        <input type="number" id="cook_time" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="servings">Adagok száma:</label>
+                        <input type="number" id="servings" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">Nehézség:</label>
+                        <select id="difficulty">
+                            <option value="könnyű">Könnyű</option>
+                            <option value="közepes">Közepes</option>
+                            <option value="nehéz">Nehéz</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredients">Hozzávalók (Név, Mennyiség, Egység - soronként):</label>
+                    <textarea id="ingredients" placeholder="finomliszt, 200, g&#10;tojás, 2, db" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="instructions">Elkészítési lépések (soronként):</label>
+                    <textarea id="instructions" placeholder="A hagymát felkockázzuk...&#10;A húst megpirítjuk..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image_file">Recept képe:</label>
+                    <input type="file" id="image_file" accept="image/*">
+                </div>
+
+                <button type="submit" class="submit-btn">Recept Mentése</button>
+            </form>
+        </div>
+    </div>
+
+    <main id="container"></main>
+
+    <script src="script.js"></script>
+    <script src="recept.js"></script>
 </body>
+
 </html>

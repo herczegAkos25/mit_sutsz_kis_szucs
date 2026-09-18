@@ -1,41 +1,310 @@
-:root{
-    --blue:#40405E;
-    --light-blue:#dee0ef;
-    --font:white;
+:root {
+    --blue: #40405E;
+    --dark-blue: #33334b;
+    --light-blue: #dee0ef;
+    --font: white;
 }
 
-body{
+* {
+    box-sizing: border-box;
+}
+
+body {
     background-color: var(--light-blue);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
 }
-nav{
-    background-color: var(--blue);
-    text-align: center;
-    height: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+
+/* --- NAVIGÁCIÓS SÁV (ASZTALI ALAPÉRTELMEZETT) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    align-content: center;
-    justify-items: center;
+    background-color: var(--blue);
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
-nav>a{
-    text-decoration: none;
-    font-size: large;
-    font-weight: bold;
+
+.main-nav a {
     color: var(--font);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.logo-link {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.logo-link .sub-text {
+    display: block;
+    margin-left: 15px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 9px 14px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.primary-btn {
+    background-color: #007bff;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-btn {
+    background-color: #6c757d;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+/* --- RECEPT KÁRTYÁK KONTÉNERE --- */
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.recipe-image-wrapper {
+    width: 100%;
+    height: 180px;
+    background-color: #f0f0f0;
+}
+
+.recipe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.recipe-card h2 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.recipe-meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.recipe-desc {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.recipe-times {
+    font-size: 0.8rem;
+    color: #777;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+}
+
+/* --- MODÁLIS ABLAK --- */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    color: #333;
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
-nav>a:hover{
-    color: cornflowerblue;
+
+.form-group textarea {
+    height: 70px;
 }
-#container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    align-content: center;
-    justify-items: center;
+
+.form-row {
+    display: flex;
+    gap: 10px;
 }
-#container>div{
-    border: 2px solid wheat;
-    width: fit-content;
-    
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- MOBILOS ELRENDEZÉS (768px ALATT) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 10px;
+        text-align: center;
+    }
+
+    /* Mobilon elrejtjük a sima linket, hogy csak a logó és a gombok maradjanak */
+    .nav-link {
+        display: none;
+    }
+
+    .logo-link .sub-text {
+        margin-left: 0;
+    }
+
+    .nav-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .nav-btn {
+        flex: 1;
+        padding: 10px 5px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    #container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+/* --- KATEGÓRIA MENÜ STÍLUS --- */
+.category-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: var(--blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.cat-filter-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.cat-filter-btn:hover,
+.cat-filter-btn.active {
+    background-color: white;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+/* Mobilon a gombok 3 oszlopban / sorban férnek el szépen */
+@media (max-width: 768px) {
+    .nav-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .nav-btn {
+        padding: 8px 4px;
+        font-size: 11px;
+        text-align: center;
+    }
 }
