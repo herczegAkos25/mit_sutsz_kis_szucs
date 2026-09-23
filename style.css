@@ -1,32 +1,58 @@
-:root{
-    --blue:#40405E;
-    --light-blue:#dee0ef;
-    --font:white;
-}
+:root {
+            --blue: #40405E;
+            --light-blue: #dee0ef;
+            --font: white;
+            --wheat: wheat;
+            --cornflower: cornflowerblue;
+            --cornflower-dark: #4682d4;
+        }
 
-body{
-    background-color: var(--light-blue);
-}
-nav{
-    background-color: var(--blue);
-    text-align: center;
-    height: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-}
-nav>a{
-    text-decoration: none;
-    font-size: large;
-    font-weight: bold;
-    color: var(--font);
-    border-radius: 5px;
-}
-nav>a:hover{
-    color: cornflowerblue;
-}
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--light-blue);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        nav {
+            background-color: var(--blue);
+            text-align: center;
+            height: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            align-content: center;
+            justify-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav > a {
+            text-decoration: none;
+            font-size: large;
+            font-weight: bold;
+            color: var(--font);
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        nav > a:hover {
+            color: var(--cornflower);
+        }
+
+        nav > a.active {
+            color: var(--cornflower);
+            border: 1px solid var(--cornflower);
+        }
+
 #container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -34,8 +60,8 @@ nav>a:hover{
     align-content: center;
     justify-items: center;
 }
+
 #container>div{
     border: 2px solid wheat;
     width: fit-content;
-    
 }
