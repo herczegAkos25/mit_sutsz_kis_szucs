@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recept Feltöltés - Mit sütsz kis szűcs</title>
-    <!-- FontAwesome icons for buttons and UI elements -->
+    <!-- FontAwesome ikonok -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="stylefelt.css">
 </head>
@@ -12,7 +12,7 @@
 
     <nav>
         <a href="#">Kategóriák</a>
-        <a href="index.html" >Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
+        <a href="index.html">Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
         <a href="feltoltes.html" class="active">Feltöltés</a>
     </nav>
 
@@ -25,7 +25,6 @@
         <div class="recipe-card">
             <form id="recipeForm" onsubmit="handleFormSubmit(event)">
                 
-                <!-- 1. Alapadatok -->
                 <div class="form-section">
                     <h2 class="section-title"><i class="fa-solid fa-utensils"></i> Recept Alapadatok</h2>
                     <div class="form-grid">
@@ -66,11 +65,9 @@
                     </div>
                 </div>
 
-                <!-- 2. Hozzávalók -->
                 <div class="form-section">
                     <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Hozzávalók</h2>
                     <div id="ingredientsContainer">
-                        <!-- Dynamic Ingredient Row 1 -->
                         <div class="dynamic-row">
                             <input type="text" placeholder="Mennyiség (pl. 50)" style="flex: 1;" required>
                             <input type="text" placeholder="Egység (pl. dkg, ek)" style="flex: 1;">
@@ -83,11 +80,9 @@
                     </button>
                 </div>
 
-                <!-- 3. Elkészítés lépései -->
                 <div class="form-section">
                     <h2 class="section-title"><i class="fa-solid fa-list-ol"></i> Elkészítés lépései</h2>
                     <div id="stepsContainer">
-                        <!-- Dynamic Step Row 1 -->
                         <div class="dynamic-row">
                             <textarea rows="2" placeholder="1. lépés leírása..." required></textarea>
                             <button type="button" class="btn btn-danger" onclick="removeStep(this)" title="Törlés"><i class="fa-solid fa-trash"></i></button>
@@ -98,7 +93,6 @@
                     </button>
                 </div>
 
-                <!-- 4. Kép feltöltés -->
                 <div class="form-section">
                     <h2 class="section-title"><i class="fa-solid fa-image"></i> Recept Képe</h2>
                     <div class="image-upload-box" onclick="document.getElementById('imageInput').click()">
@@ -109,7 +103,6 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
                 <button type="submit" class="btn btn-submit">
                     <i class="fa-solid fa-paper-plane"></i> Recept Beküldése
                 </button>
@@ -126,88 +119,6 @@
         </div>
     </div>
 
-    <script>
-        // Dynamic Ingredient Addition
-        function addIngredientRow() {
-            const container = document.getElementById('ingredientsContainer');
-            const row = document.createElement('div');
-            row.className = 'dynamic-row';
-            row.innerHTML = `
-                <input type="text" placeholder="Mennyiség (pl. 1)" style="flex: 1;">
-                <input type="text" placeholder="Egység (pl. tk, csipet)" style="flex: 1;">
-                <input type="text" placeholder="Hozzávaló neve" style="flex: 2;">
-                <button type="button" class="btn btn-danger" onclick="removeRow(this)" title="Törlés"><i class="fa-solid fa-trash"></i></button>
-            `;
-            container.appendChild(row);
-        }
-
-        function removeRow(button) {
-            const container = document.getElementById('ingredientsContainer');
-            if (container.children.length > 1) {
-                button.parentElement.remove();
-            } else {
-                alert('At alábbi mezőt nem törölheted: Legalább 1 hozzávaló megadása kötelező!');
-            }
-        }
-
-        // Dynamic Step Addition
-        function addStepRow() {
-            const container = document.getElementById('stepsContainer');
-            const stepNum = container.children.length + 1;
-            const row = document.createElement('div');
-            row.className = 'dynamic-row';
-            row.innerHTML = `
-                <textarea rows="2" placeholder="${stepNum}. lépés leírása..."></textarea>
-                <button type="button" class="btn btn-danger" onclick="removeStep(this)" title="Törlés"><i class="fa-solid fa-trash"></i></button>
-            `;
-            container.appendChild(row);
-        }
-
-        function removeStep(button) {
-            const container = document.getElementById('stepsContainer');
-            if (container.children.length > 1) {
-                button.parentElement.remove();
-                updateStepPlaceholders();
-            } else {
-                alert('At alábbi mezőt nem törölheted: Legalább 1 lépés megadása kötelező!');
-            }
-        }
-
-        function updateStepPlaceholders() {
-            const steps = document.querySelectorAll('#stepsContainer textarea');
-            steps.forEach((step, index) => {
-                step.placeholder = `${index + 1}. lépés leírása...`;
-            });
-        }
-
-        // Image Preview Handler
-        function previewImage(event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById('imagePreview');
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Form Submit Handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            document.getElementById('successModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('successModal').style.display = 'none';
-            document.getElementById('recipeForm').reset();
-            const preview = document.getElementById('imagePreview');
-            preview.src = '';
-            preview.style.display = 'none';
-        }
-    </script>
+    <script src="receptFeltöltés.js"></script>
 </body>
 </html>
