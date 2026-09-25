@@ -1,60 +1,75 @@
-const tarolo = document.getElementById("container");
+let recipes = [];
 
-function ReceptekIde() {
-    var receptek = [
-        {
-            id: 1,
-            title: "Töltött káposzta",
-            difficulty: "Közepes",
-            hozzavalok: [
-                "1 kg savanyú káposzta",
-                "8 közepes db káposztalevél (savanyú)",
-                "0.5 kg darált sertéshús",
-                "20 dkg kolozsvári szalonna",
-                "20 dkg kolbász",
-                "1 közepes db vöröshagyma",
-                "20 dkg rizs (főtt)",
-                "2 gerezd fokhagyma",
-                "3 teáskanál fűszerpaprika",
-                "1 teáskanál őrölt fűszerkömény",
-                "5 db babérlevél",
-                "1 evőkanál finomliszt",
-                "1 ek sertészsír",
-                "2 l víz (kb.)",
-                "só ízlés szerint"
-            ],
-            lepesek: [
-                "A kolozsvári szalonnát csíkokra vágjuk, és száraz serpenyőben kisütjük.",
-                "A kisült zsírban megpirítjuk a hagymát és a fokhagymát.",
-                "Összekeverjük a darált húst, rizst, hagymát, fűszereket és a szalonnát 1 dl vízzel.",
-                "A savanyú káposzta felét az edény aljára tesszük babérlevéllel és kolbásszal.",
-                "A káposztalevelekbe töltjük a húst, és az edénybe rétegezzük.",
-                "Felöntjük vízzel, és kis lángon 2 órán át főzzük.",
-                "Zsírból, lisztből és fűszerpaprikából rántást készítünk, majd a káposztára öntjük."
-            ],
-            image_path: ["toltott_kaposzta.jpg"]
+async function loadRecipes() {
+    const savedRecipes = localStorage.getItem('recipes_data');
+    
+    if (savedRecipes) {
+        try {
+            recipes = JSON.parse(savedRecipes);
+        } catch (e) {
+            recipes = [];
         }
-    ];
-
-    for (let index = 0; index < receptek.length; index++) {
-        var doboz = document.createElement('div');
-        var kep = document.createElement('div');
-        var cim = document.createElement('div');
-        var nehezseg = document.createElement('span');
-
-        kep.innerHTML = receptek[index].kepek.length > 0 
-            ? `<img src="${receptek[index].kepek[0]}" alt="${receptek[index].nev}">` 
-            : '';
-            
-        cim.innerHTML = receptek[index].nev;
-        nehezseg.innerHTML = receptek[index].nehezseg || "Átlagos";
-
-        cim.appendChild(nehezseg);
-        doboz.appendChild(kep);
-        doboz.appendChild(cim);
-
-        tarolo.appendChild(doboz);
+        renderRecipes(recipes);
+    } else {
+        try {
+            const response = await fetch('receptek.json');
+            recipes = await response.json();
+            localStorage.setItem('recipes_data', JSON.stringify(recipes));
+            renderRecipes(recipes);
+        } catch (error) {
+            console.error('Hiba a receptek betöltésekor:', error);
+            renderRecipes([]);
+        }
     }
 }
 
-ReceptekIde();
+function renderRecipes(recipeList = recipes) {
+    const container = document.getElementById('container');
+    if (!container) return;
+
+    if (!Array.isArray(recipeList) || recipeList.length === 0) {
+        container.innerHTML = '<p style="padding:20px; text-align:center;">Nincsenek megjeleníthető receptek.</p>';
+        return;
+    }
+
+    container.innerHTML = recipeList.map(recipe => {
+        const imageSrc = (recipe.image_path && recipe.image_path.trim() !== "") 
+            ? recipe.image_path 
+            : 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=600&q=80';
+
+        return `
+            <article class="recipe-card-item">
+                <div class="recipe-image-wrapper">
+                    <img src="${imageSrc}" alt="${recipe.title || 'Recept'}" class="recipe-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=600&q=80';">
+                </div>
+                <div class="recipe-content">
+                    <h2>${recipe.title || 'Névtelen recept'}</h2>
+                    <div class="recipe-meta">
+                        <span>🏷️ ${recipe.category || 'Általános'}</span> | 
+                        <span>🌍 ${recipe.cuisine || 'Magyar'}</span> | 
+                        <span>📊 ${recipe.difficulty || 'könnyű'}</span>
+                    </div>
+                    <p class="recipe-desc">${recipe.description || ''}</p>
+                    <div class="recipe-times">
+                        ⏱️ Előkészítés: ${recipe.prep_time_minutes || 0} perc | 🍳 Sütés/Főzés: ${recipe.cook_time_minutes || 0} perc | 🍽️ ${recipe.servings || 1} adag
+                    </div>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+function readImageFile(file) {
+    return new Promise((resolve, reject) => {
+        if (!file) {
+            resolve("");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+
+loadRecipes();
