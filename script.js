@@ -51,7 +51,7 @@ function renderRecipes(recipeList = recipes) {
                     </div>
                     <p class="recipe-desc">${recipe.description || ''}</p>
                     <div class="recipe-times">
-                        ⏱️ Előkészítés: ${recipe.prep_time_minutes || 0} perc | 🍳 Sütés/Főzés: ${recipe.cook_time_minutes || 0} perc | 🍽️ ${recipe.servings || 1} adag
+                        ⏱️ Előkészítés: ${recipe.prep_time_minutes || 0} perc  <br> 🍳 Sütés/Főzés: ${recipe.cook_time_minutes || 0} perc  <br> 🍽️ ${recipe.servings || 1} adag
                     </div>
                 </div>
             </article>
