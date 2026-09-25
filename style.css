@@ -53,15 +53,110 @@
             border: 1px solid var(--cornflower);
         }
 
-#container{
+
+
+        
+#container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    align-content: center;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-#container>div{
-    border: 2px solid wheat;
-    width: fit-content;
+.recipe-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.recipe-image-wrapper {
+    width: 100%;
+    height: 180px;
+    background-color: #f0f0f0;
+}
+
+.recipe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.recipe-card h2 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.recipe-meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.recipe-desc {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.recipe-times {
+    font-size: 0.8rem;
+    color: #777;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+}
+
+
+
+@media (max-width: 768px) {
+    /* Logó egy sorba rendezése mobilon */
+    .logo-link {
+        font-size: 1rem;
+        white-space: nowrap; /* Megakadályozza az automatikus tördelést */
+        text-align: center;
+    }
+
+    /* A soremelés (<br>) eltüntetése mobilon */
+    .logo-link br {
+        display: none;
+    }
+
+    /* Az alsó szövegrész egymás mellé simítása */
+    .logo-link .sub-text {
+        display: inline;
+        margin-left: 5px; /* Kis szóköz a két szó között */
+    }
+
+    /* A navigáció mobilos igazítása */
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 10px;
+    }
+
+    .nav-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .nav-btn {
+        padding: 8px 4px;
+        font-size: 11px;
+        text-align: center;
+    }
 }
