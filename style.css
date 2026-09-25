@@ -50,7 +50,6 @@ nav > a:hover {
 
 nav > a.active {
     color: var(--cornflower);
-    border: 1px solid var(--cornflower);
 }
 
 /* Kártyák rács elrendezése a főoldalon */
@@ -177,6 +176,11 @@ input[type="text"], input[type="number"], select, textarea {
     border: 1px solid var(--wheat);
     background-color: rgba(255, 255, 255, 0.95);
     color: #333;
+    resize: none;
+}
+
+textarea{
+    height: 100px;
 }
 
 .dynamic-row {
