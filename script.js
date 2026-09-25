@@ -12,7 +12,7 @@ async function loadRecipes() {
         renderRecipes(recipes);
     } else {
         try {
-            const response = await fetch('receptek.json');
+            const response = await fetch('/.netlify/functions/get-recipes');
             recipes = await response.json();
             localStorage.setItem('recipes_data', JSON.stringify(recipes));
             renderRecipes(recipes);

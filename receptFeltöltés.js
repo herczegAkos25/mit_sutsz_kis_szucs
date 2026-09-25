@@ -157,10 +157,10 @@ async function handleFormSubmit(event) {
     };
 
     try {
-        const response = await fetch('/.netlify/functions/update-json', {
+        const response = await fetch('/.netlify/functions/add-recipe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ newRecipe: newRecipe })
+            body: JSON.stringify(newRecipe)
         });
 
         const result = await response.json();
