@@ -1,11 +1,17 @@
 const uploadModal = document.getElementById('uploadModal');
 const openUploadBtn = document.getElementById('openUploadBtn');
+const recipeForm = document.getElementById('recipeForm');
 
 if (openUploadBtn) {
     openUploadBtn.addEventListener('click', (e) => {
         e.preventDefault();
         uploadModal.style.display = 'flex';
     });
+}
+
+// Esemenylistenzo a form bekuldesere
+if (recipeForm) {
+    recipeForm.addEventListener('submit', handleFormSubmit);
 }
 
 function closeUploadModal() {
@@ -83,6 +89,20 @@ function previewImage(event) {
     }
 }
 
+// Segedfuggveny a kep Base64-re alakitasahoz
+function readImageFile(file) {
+    return new Promise((resolve, reject) => {
+        if (!file) {
+            resolve("");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+
 async function handleFormSubmit(event) {
     event.preventDefault();
 
@@ -136,16 +156,31 @@ async function handleFormSubmit(event) {
         instructions: [{ section: "Elkészítés", steps: steps }]
     };
 
-    let existingRecipes = JSON.parse(localStorage.getItem('recipes_data')) || [];
-    existingRecipes.push(newRecipe);
-    localStorage.setItem('recipes_data', JSON.stringify(existingRecipes));
+    try {
+        const response = await fetch('/.netlify/functions/update-json', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ newRecipe: newRecipe })
+        });
 
-    if (typeof loadRecipes === 'function') {
-        loadRecipes();
+        const result = await response.json();
+
+        if (response.ok) {
+            localStorage.removeItem('recipes_data');
+            
+            if (typeof loadRecipes === 'function') {
+                loadRecipes();
+            }
+
+            closeUploadModal();
+            document.getElementById('successModal').style.display = 'flex';
+        } else {
+            alert('Hiba történt a mentés során: ' + (result.error || 'Ismeretlen hiba'));
+        }
+    } catch (err) {
+        console.error('Hálózati hiba a mentéskor:', err);
+        alert('Hálózati hiba történt a recept mentése közben!');
     }
-
-    closeUploadModal();
-    document.getElementById('successModal').style.display = 'flex';
 }
 
 function closeSuccessModal() {
