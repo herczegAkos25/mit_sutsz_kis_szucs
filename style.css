@@ -109,6 +109,29 @@ nav > a.active {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* 1. A görgetősáv szélessége */
+.modal-window::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 2. A görgetősáv háttér-pályája (amiben a csúszka mozog) */
+.modal-window::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* 3. Maga a mozgatható csúszka (Thumb) */
+.modal-window::-webkit-scrollbar-thumb {
+    background: var(--wheat); 
+    border-radius: 10px;
+    border: 2px solid var(--blue); 
+}
+
+/* 4. A csúszka kinézete, ha fölé viszed az egeret (Hover) */
+.modal-window::-webkit-scrollbar-thumb:hover {
+    background: #e6c875;
+}
+
 .modal-close-btn {
     position: absolute;
     top: 15px;
