@@ -256,3 +256,36 @@ textarea{
     display: none;
     border: 2px solid var(--wheat);
 }
+
+
+
+.category-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: var(--blue);
+    padding: 10px;
+    border-radius: 8px;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 70%;
+}
+
+.cat-filter-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.cat-filter-btn:hover,
+.cat-filter-btn.active {
+    background-color: white;
+    color: var(--blue);
+    font-weight: bold;
+}

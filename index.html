@@ -12,6 +12,14 @@
         <a href="#">Kategóriák</a>
         <a href="index.html" class="active">Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
         <a href="#" id="openUploadBtn">Feltöltés</a>
+
+        <div id="categoryMenu" class="category-menu" style="display: none;">
+        <button class="cat-filter-btn active" data-category="all">Összes</button>
+        <button class="cat-filter-btn" data-category="Előétel / Leves">Előétel / Leves</button>
+        <button class="cat-filter-btn" data-category="Főétel">Főétel</button>
+        <button class="cat-filter-btn" data-category="Sütemény / Desszert">Sütemény / Desszert</button>
+        <button class="cat-filter-btn" data-category="Péksütemény">Péksütemény</button>
+        </div>
     </nav>
 
     <div id="container"></div>
@@ -39,10 +47,10 @@
                             <label for="category">Kategória *</label>
                             <select id="category" required>
                                 <option value="" disabled selected>Válassz kategóriát...</option>
-                                <option value="Sütemény / Desszert">Sütemény / Desszert</option>
-                                <option value="Főétel">Főétel</option>
                                 <option value="Előétel / Leves">Előétel / Leves</option>
-                                <option value="Péksütemény / Kenyér">Péksütemény / Kenyér</option>
+                                <option value="Főétel">Főétel</option>
+                                <option value="Sütemény / Desszert">Sütemény / Desszert</option>
+                                <option value="Péksütemény / Kenyér">Péksütemény</option>
                             </select>
                         </div>
 
