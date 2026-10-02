@@ -1,186 +1,461 @@
-/* A modalok nyitott állapota: a style.css-től függetlenül mindig működik. */
-.modal-overlay.is-open {
-  display: flex !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.55);
-  overflow-y: auto;
-  padding: 16px;
+:root {
+    --blue: #40405E;
+    --light-blue: #dee0ef;
+    --font: white;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --danger: #ef4444;
+    --success: #10b981;
 }
 
-.modal-overlay.is-open .modal-window {
-  max-height: 92vh;
-  overflow-y: auto;
-  max-width: 760px;
-  width: 100%;
+body {
+    background-color: var(--light-blue);
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
 }
 
 body.modal-open {
-  overflow: hidden;
+    overflow: hidden;
+}
+
+/* --- NAVIGÁCIÓ --- */
+nav {
+    background-color: var(--blue);
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav > a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--font);
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav > a:hover {
+    color: #93c5fd;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.brand-logo:hover{
+  background: none;
+  color: none;
+}
+
+/* --- RECEPTEK FŐ KONTÉNERE --- */
+#container {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rc-wrap {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* --- KATEGÓRIA SZŰRŐ GOMBOK --- */
+.rc-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.rc-chip {
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rc-chip:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.rc-chip.is-active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+/* --- RECEPT GRID --- */
+.rc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    align-items: start;
+}
+
+/* --- RECEPT KÁRTYA --- */
+.rc-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.rc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.rc-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.rc-card-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rc-card-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.rc-card-meta {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.rc-card-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.rc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.rc-tag {
+    background: #f3f4f6;
+    color: #4b5563;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.rc-details {
+    margin-top: 10px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 10px;
+}
+
+.rc-details summary {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary);
+    cursor: pointer;
+    user-select: none;
+}
+
+.rc-details summary:hover {
+    color: var(--primary-hover);
+}
+
+.rc-details h4 {
+    margin: 12px 0 6px 0;
+    font-size: 0.95rem;
+}
+
+.rc-details ul, .rc-details ol {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.85rem;
+    color: #374151;
+}
+
+.rc-details li {
+    margin-bottom: 4px;
+}
+
+/* ==========================================
+   MODALOK ÉS FELTÖLTŐ ŰRLAP STÍLUSAI
+   ========================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-overlay.is-open {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #ffffff !important;
+    color: var(--text-dark) !important;
+    width: 100%;
+    max-width: 650px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--blue);
+}
+
+.modal-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.modal-content h3 {
+    margin-top: 25px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+    color: #334155;
+    font-size: 1.1rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #64748b;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.close-btn:hover {
+    color: #0f172a;
+    background-color: #f1f5f9;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary) !important;
+    background-color: #ffffff !important;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-col {
+    flex: 1;
+}
+
+.dynamic-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+.btn-primary, .btn-submit {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover, .btn-submit:hover {
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e1;
+}
+
+.btn-danger {
+    background: #fee2e2;
+    color: var(--danger);
+    padding: 10px;
+}
+
+.btn-danger:hover {
+    background: #fecaca;
+}
+
+.form-actions {
+    margin-top: 25px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.file-upload-box {
+    border: 2px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background: #f8fafc;
+    cursor: pointer;
+    margin-top: 8px;
 }
 
 #imagePreview {
     max-width: 100%;
     max-height: 200px;
-    border-radius: 6px;
-    margin-top: 10px;
-    display: none;
-    border: 2px solid var(--wheat);
+    border-radius: 10px;
+    margin-top: 15px;
+    object-fit: cover;
 }
 
-
-
-.category-menu {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    background-color: var(--blue);
-    padding: 10px;
-    border-radius: 8px;
-    margin: auto;
-    margin-bottom: 20px;
-    width: 70%;
+.text-center {
+    text-align: center;
 }
 
-.cat-filter-btn {
-    background-color: transparent;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 6px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
+.success-icon {
+    font-size: 3rem;
+    color: var(--success);
+    margin-bottom: 15px;
 }
-
-.cat-filter-btn:hover,
-.cat-filter-btn.active {
-    background-color: white;
-    color: var(--blue);
-    font-weight: bold;
-    display: none;
-    max-width: 100%;
-    max-height: 260px;
-    margin-top: 10px;
-    border-radius: 8px;
-  }
 
 .rc-form-error {
-  display: none;
-  margin: 0 0 12px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  background: #fde8e8;
-  color: #9b1c1c;
-  font-weight: 600;
+    background: #fef2f2;
+    color: var(--danger);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #fecaca;
+    margin-top: 15px;
+    font-size: 0.9rem;
 }
 
-/* Receptlista */
-.rc-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px 16px 48px;
+/* Recept megtekintése gomb a kártyán */
+.btn-details {
+    margin-top: 12px;
+    width: 100%;
+    justify-content: center;
 }
 
-.rc-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+/* Modal kép és listák formázása */
+.rc-modal-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
-.rc-chip {
-  border: 1px solid var(--wheat, #d9a441);
-  background: #fff;
-  color: #5a3e1b;
-  padding: 8px 16px;
-  border-radius: 999px;
-  cursor: pointer;
-  font: inherit;
+.rc-modal-section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    color: var(--blue);
 }
 
-.rc-chip.is-active,
-.rc-chip:hover {
-  background: var(--wheat, #d9a441);
-  color: #fff;
+.rc-modal-list {
+    padding-left: 20px;
+    line-height: 1.6;
+    color: #334155;
 }
 
-.rc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+.rc-modal-list li {
+    margin-bottom: 6px;
 }
-
-.rc-card {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-  display: flex;
-  flex-direction: column;
-}
-
-.rc-card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.rc-card-body {
-  padding: 16px;
-}
-
-.rc-card-title {
-  margin: 0 0 6px;
-}
-
-.rc-card-meta {
-  margin: 0 0 12px;
-  color: #6b6b6b;
-  font-size: 0.9rem;
-}
-
-.rc-details summary {
-  cursor: pointer;
-  font-weight: 600;
-  color: #8a5a14;
-}
-
-.rc-details h4 {
-  margin: 14px 0 6px;
-}
-
-.rc-details ul,
-.rc-details ol {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.rc-details li {
-  margin-bottom: 4px;
-}
-
-.rc-empty {
-  text-align: center;
-  color: #6b6b6b;
-  padding: 40px 0;
-}
-
-.rc-error-box {
-  text-align: center;
-  padding: 30px 16px;
-  color: #9b1c1c;
-}
-
-.rc-card-desc { margin: 0 0 10px; font-size: 0.95rem; }
-.rc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.rc-tag { background: #f6ecd9; color: #7a4f12; border-radius: 999px; padding: 2px 10px; font-size: 0.8rem; }
-.rc-details h5 { margin: 10px 0 4px; color: #7a4f12; }
-.rc-error-box { background: #fde8e8; border-radius: 8px; margin-bottom: 20px; }

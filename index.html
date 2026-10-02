@@ -5,142 +5,141 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🍽️ Mit sütsz kis szűcs? 🍳</title>
+
+  <!-- FontAwesome az ikonokhoz -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Saját stíluslap -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="fixes.css">
+
+  <!-- Supabase JS SDK CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Config és Script betöltése -->
+  <script src="config.js"></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-
   <nav>
-    <a href="#" id="categoriesBtn">Kategóriák</a>
-    <a href="index.html" class="active">Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
+    <!-- <a href="#" id="categoriesBtn">Kategóriák</a>-->
+    <a href="#" class="brand-logo">Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
     <a href="#" id="openUploadBtn">Feltöltés</a>
-
   </nav>
+
+  <!-- Főkonténer a dinamikus recepteknek -->
+  <main id="container"></main>
   
-  <div id="categoryMenu" class="category-menu" style="display: none;">
-    <button class="cat-filter-btn active" data-category="all">Összes</button>
-    <button class="cat-filter-btn" data-category="Előétel">Előétel</button>
-    <button class="cat-filter-btn" data-category="Leves">Leves</button>
-    <button class="cat-filter-btn" data-category="Főétel">Főétel</button>
-    <button class="cat-filter-btn" data-category="Desszert">Sütemény / Desszert</button>
-    <button class="cat-filter-btn" data-category="Péksütemény">Péksütemény</button>
+  <div id="recipeModal" class="modal-overlay">
+    <div class="modal-content">
+        <button type="button" class="close-btn" onclick="closeRecipeModal()" aria-label="Bezárás">&times;</button>
+        <h2 id="recipeModalTitle">Recept neve</h2>
+        <div id="recipeModalBody">
+        </div>
+    </div>
+</div>
+
+  <!-- ================= FELTÖLTŐ MODAL ================= -->
+  <div id="uploadModal" class="modal-overlay">
+    <div class="modal-content">
+      <button type="button" class="close-btn" onclick="closeUploadModal()" aria-label="Bezárás">&times;</button>
+
+      <h2>Új Recept Feltöltése</h2>
+      <p class="modal-subtitle">Oszd meg velünk a legfinomabb sütijeidet és ételeidet!</p>
+
+      <form id="recipeForm" onsubmit="handleFormSubmit(event)">
+        <h3>🍳 Recept Alapadatok</h3>
+
+        <label for="recipeTitle">Recept neve *</label>
+        <input type="text" id="recipeTitle" placeholder="Pl. Nagymama Aranygaluskája" required>
+
+        <label for="description">Rövid leírás</label>
+        <textarea id="description" rows="2" placeholder="Egy-két mondat a receptről"></textarea>
+
+        <div class="form-row">
+          <div class="form-col">
+            <label for="category">Kategória *</label>
+            <select id="category" required>
+              <option value="">Válassz kategóriát...</option>
+              <option value="Főétel">Főétel</option>
+              <option value="Desszert">Desszert</option>
+              <option value="Leves">Leves</option>
+              <option value="Péksütemény">Péksütemény</option>
+            </select>
+          </div>
+          <div class="form-col">
+            <label for="difficulty">Nehézség *</label>
+            <select id="difficulty" required>
+              <option value="könnyű">Könnyű</option>
+              <option value="közepes" selected>Közepes</option>
+              <option value="nehéz">Nehéz</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <label for="servings">Adag (személyek) *</label>
+            <input type="number" id="servings" min="1" value="4" required>
+          </div>
+          <div class="form-col">
+            <label for="prepTime">Előkészítési idő (perc) *</label>
+            <input type="number" id="prepTime" min="0" value="20" required>
+          </div>
+          <div class="form-col">
+            <label for="cookTime">Sütési/főzési idő (perc)</label>
+            <input type="number" id="cookTime" min="0" value="40">
+          </div>
+        </div>
+
+        <h3>🥣 Hozzávalók</h3>
+        <div id="ingredientsContainer">
+          <div class="dynamic-row">
+            <input type="text" placeholder="Mennyiség (pl. 50)" aria-label="Mennyiség" style="flex: 1;" required>
+            <input type="text" placeholder="Egység (pl. dkg, ek)" aria-label="Egység" style="flex: 1;">
+            <input type="text" placeholder="Hozzávaló neve (pl. finomliszt)" aria-label="Hozzávaló neve"
+              style="flex: 2;" required>
+            <button type="button" class="btn btn-danger" onclick="removeRow(this)" title="Törlés"><i
+                class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="addIngredientRow()">+ Új hozzávaló</button>
+
+        <h3>📝 Elkészítés lépései</h3>
+        <div id="stepsContainer">
+          <div class="dynamic-row">
+            <textarea rows="2" aria-label="Lépés leírása" placeholder="1. lépés leírása..." required></textarea>
+            <button type="button" class="btn btn-danger" onclick="removeStep(this)" title="Törlés"><i
+                class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="addStepRow()">+ Új lépés</button>
+
+        <h3>🖼️ Recept Képe</h3>
+        <div class="file-upload-box">
+          <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+          <p class="file-info">Kattints ide vagy húzd ide a képet (Max 10MB)</p>
+        </div>
+        <img id="imagePreview" alt="Recept előnézeti képe" style="display: none;">
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-submit">
+            <i class="fa-solid fa-paper-plane"></i> Recept Beküldése
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <form id="recipeForm" onsubmit="handleFormSubmit(event)">
-
-    <div class="form-section">
-      <h2 class="section-title"><i class="fa-solid fa-utensils"></i> Recept Alapadatok</h2>
-      <div class="form-grid">
-        <div class="full-width">
-          <label for="recipeTitle">Recept neve *</label>
-          <input type="text" id="recipeTitle" required maxlength="120" placeholder="Pl. Nagymama Aranygaluskája">
-        </div>
-
-        <div class="full-width">
-          <label for="description">Rövid leírás</label>
-          <textarea id="description" rows="2" maxlength="400" placeholder="Egy-két mondat a receptről"></textarea>
-        </div>
-
-        <div>
-          <label for="category">Kategória *</label>
-          <select id="category" required>
-            <option value="" disabled selected>Válassz kategóriát...</option>
-            <option value="Főétel">Főétel</option>
-            <option value="Desszert">Desszert</option>
-            <option value="Leves">Leves</option>
-            <option value="Péksütemény">Péksütemény</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="servings">Adag (személyek száma) *</label>
-          <input type="number" id="servings" min="1" max="100" required placeholder="4">
-        </div>
-
-        <div>
-          <label for="prepTime">Előkészítési idő (perc) *</label>
-          <input type="number" id="prepTime" min="1" required placeholder="20">
-        </div>
-
-        <div>
-          <label for="cookTime">Sütési / főzési idő (perc)</label>
-          <input type="number" id="cookTime" min="0" placeholder="40">
-        </div>
-
-        <div>
-          <label for="difficulty">Nehézség *</label>
-          <select id="difficulty" required>
-            <option value="könnyű">Könnyű</option>
-            <option value="közepes" selected>Közepes</option>
-            <option value="nehéz">Nehéz</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h2 class="section-title"><i class="fa-solid fa-list-check"></i> Hozzávalók</h2>
-      <div id="ingredientsContainer">
-        <div class="dynamic-row">
-          <input type="text" placeholder="Mennyiség (pl. 50)" aria-label="Mennyiség" style="flex: 1;" required>
-          <input type="text" placeholder="Egység (pl. dkg, ek)" aria-label="Egység" style="flex: 1;">
-          <input type="text" placeholder="Hozzávaló neve (pl. finomliszt)" aria-label="Hozzávaló neve" style="flex: 2;"
-            required>
-          <button type="button" class="btn btn-danger" onclick="removeRow(this)" title="Törlés"
-            aria-label="Hozzávaló törlése"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </div>
-      <button type="button" class="btn btn-secondary" onclick="addIngredientRow()" style="margin-top: 8px;">
-        <i class="fa-solid fa-plus"></i> Új hozzávaló
-      </button>
-    </div>
-
-    <div class="form-section">
-      <h2 class="section-title"><i class="fa-solid fa-list-ol"></i> Elkészítés lépései</h2>
-      <div id="stepsContainer">
-        <div class="dynamic-row">
-          <textarea rows="2" placeholder="1. lépés leírása..." aria-label="Lépés leírása" required></textarea>
-          <button type="button" class="btn btn-danger" onclick="removeStep(this)" title="Törlés"
-            aria-label="Lépés törlése"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </div>
-      <button type="button" class="btn btn-secondary" onclick="addStepRow()" style="margin-top: 8px;">
-        <i class="fa-solid fa-plus"></i> Új lépés
-      </button>
-    </div>
-
-    <div class="form-section">
-      <h2 class="section-title"><i class="fa-solid fa-image"></i> Recept Képe</h2>
-      <div class="image-upload-box" onclick="document.getElementById('imageInput').click()">
-        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px; color: var(--wheat); margin-bottom: 8px;"></i>
-        <p style="margin: 0;">Kattints ide a kép feltöltéséhez</p>
-        <input type="file" id="imageInput" accept="image/*" style="display: none;" onclick="event.stopPropagation()"
-          onchange="previewImage(event)">
-        <img id="imagePreview" alt="Recept előnézeti képe">
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-submit">
-      <i class="fa-solid fa-paper-plane"></i> Recept Beküldése
-    </button>
-  </form>
-  </div>
-  </div>
-
+  <!-- ================= SIKERES FELTÖLTÉS MODAL ================= -->
   <div id="successModal" class="modal-overlay">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="successTitle">
-      <i class="fa-solid fa-circle-check" style="font-size: 48px; color: var(--wheat); margin-bottom: 15px;"></i>
-      <h3 id="successTitle">Sikeres Feltöltés!</h3>
-      <p>A receptedet sikeresen elmentettük.</p>
-      <button type="button" class="btn btn-submit" onclick="closeSuccessModal()">Rendben</button>
+    <div class="modal-content text-center">
+      <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h2>Sikeres Feltöltés!</h2>
+      <p>A receptedet sikeresen elmentettük az adatbázisba.</p>
+      <button type="button" class="btn btn-primary" onclick="closeSuccessModal()">Rendben</button>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-  <script src="config.js"></script>
-  <script src="script.js"></script>
 </body>
 
 </html>

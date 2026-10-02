@@ -120,6 +120,54 @@
     return /^[\w.\-%]+(\/[\w.\-%]+)*$/.test(path) ? encodeURI(path) : '';
   }
 
+  function openRecipeModal(r) {
+    const titleEl = $('recipeModalTitle');
+    const bodyEl = $('recipeModalBody');
+    if (!titleEl || !bodyEl) return;
+
+    titleEl.textContent = r.title;
+    bodyEl.replaceChildren();
+
+    const src = imageSrc(r.image);
+    if (src) {
+      const img = h('img', 'rc-modal-img');
+      img.src = src;
+      img.alt = r.title;
+      bodyEl.appendChild(img);
+    }
+
+    const total = (Number(r.prepTime) || 0) + (Number(r.cookTime) || 0);
+    bodyEl.appendChild(
+      h('p', 'rc-card-meta', `${r.category} · ${total} perc · ${r.servings} adag · ${r.difficulty}`)
+    );
+
+    if (r.description) bodyEl.appendChild(h('p', 'rc-card-desc', r.description));
+
+    // Hozzávalók
+    bodyEl.appendChild(h('h3', 'rc-modal-section-title', '🥣 Hozzávalók'));
+    (r.ingredients || []).forEach((g) => {
+      if (g.group && (r.ingredients || []).length > 1) bodyEl.appendChild(h('h4', '', g.group));
+      const ul = h('ul', 'rc-modal-list');
+      (g.items || []).forEach((i) => ul.appendChild(h('li', '', ingredientText(i))));
+      bodyEl.appendChild(ul);
+    });
+
+    // Elkészítés
+    bodyEl.appendChild(h('h3', 'rc-modal-section-title', '📝 Elkészítés'));
+    (r.instructions || []).forEach((sec) => {
+      if (sec.section && (r.instructions || []).length > 1) bodyEl.appendChild(h('h4', '', sec.section));
+      const ol = h('ol', 'rc-modal-list');
+      (sec.steps || []).forEach((st) => ol.appendChild(h('li', '', st)));
+      bodyEl.appendChild(ol);
+    });
+
+    openModal('recipeModal');
+  }
+
+  function closeRecipeModal() {
+    closeModal('recipeModal');
+  }
+
   function buildCard(r) {
     const card = h('article', 'rc-card');
 
@@ -147,55 +195,12 @@
       body.appendChild(tags);
     }
 
-    const details = h('details', 'rc-details');
-    details.appendChild(h('summary', '', 'Hozzávalók és elkészítés'));
+    // A régi <details> helyett egy tiszta gomb, ami megnyitja a modal-t
+    const btn = h('button', 'btn btn-primary btn-details', 'Recept megtekintése');
+    btn.type = 'button';
+    btn.addEventListener('click', () => openRecipeModal(r));
+    body.appendChild(btn);
 
-    details.appendChild(h('h4', '', 'Hozzávalók'));
-    (r.ingredients || []).forEach((g) => {
-      if (g.group && (r.ingredients || []).length > 1) details.appendChild(h('h5', '', g.group));
-      const ul = h('ul');
-      (g.items || []).forEach((i) => ul.appendChild(h('li', '', ingredientText(i))));
-      details.appendChild(ul);
-    });
-
-
-const categoriesBtn = document.getElementById('categoriesBtn');
-const categoryMenu = document.getElementById('categoryMenu');
-
-if (categoriesBtn && categoryMenu) {
-    categoriesBtn.addEventListener('click', () => {
-        const isHidden = categoryMenu.style.display === 'none';
-        categoryMenu.style.display = isHidden ? 'flex' : 'none';
-    });
-}
-
-document.querySelectorAll('.cat-filter-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-        document.querySelectorAll('.cat-filter-btn').forEach(btn => btn.classList.remove('active'));
-        e.target.classList.add('active');
-
-        const selectedCategory = e.target.getAttribute('data-category');
-        
-        if (selectedCategory === 'all') {
-            renderRecipes(recipes);
-        } else {
-            const filtered = recipes.filter(r => r.category === selectedCategory);
-            renderRecipes(filtered);
-        }
-    });
-});
-
-loadRecipes();
-
-    details.appendChild(h('h4', '', 'Elkészítés'));
-    (r.instructions || []).forEach((sec) => {
-      if (sec.section && (r.instructions || []).length > 1) details.appendChild(h('h5', '', sec.section));
-      const ol = h('ol');
-      (sec.steps || []).forEach((st) => ol.appendChild(h('li', '', st)));
-      details.appendChild(ol);
-    });
-
-    body.appendChild(details);
     card.appendChild(body);
     return card;
   }
@@ -348,23 +353,37 @@ loadRecipes();
       box.id = 'formError';
       box.setAttribute('role', 'alert');
       const submit = document.querySelector('#recipeForm .btn-submit');
-      submit.parentNode.insertBefore(box, submit);
+      if (submit && submit.parentNode) {
+        submit.parentNode.insertBefore(box, submit);
+      }
     }
-    box.textContent = message;
-    box.style.display = message ? 'block' : 'none';
+    if (box) {
+      box.textContent = message;
+      box.style.display = message ? 'block' : 'none';
+    }
   }
 
   function resetForm() {
-    $('recipeForm').reset();
+    const form = $('recipeForm');
+    if (form) form.reset();
+    
     const ing = $('ingredientsContainer');
-    while (ing.children.length > 1) ing.lastElementChild.remove();
+    if (ing) {
+      while (ing.children.length > 1) ing.lastElementChild.remove();
+    }
+    
     const steps = $('stepsContainer');
-    while (steps.children.length > 1) steps.lastElementChild.remove();
+    if (steps) {
+      while (steps.children.length > 1) steps.lastElementChild.remove();
+    }
+    
     renumberSteps();
     imageBlob = null;
     const preview = $('imagePreview');
-    preview.removeAttribute('src');
-    preview.style.display = 'none';
+    if (preview) {
+      preview.removeAttribute('src');
+      preview.style.display = 'none';
+    }
     setFormError('');
   }
 
@@ -444,8 +463,12 @@ loadRecipes();
 
   /* ---------- eseménykezelők és indulás ---------- */
 
-  // Az index.html inline onclick/onsubmit attribútumai ezeket a globális neveket várják.
+  // Globális hívhatóság az HTML inline attribútumokhoz (onclick, onsubmit, stb.)
   Object.assign(window, {
+    closeRecipeModal,
+    openModal,
+    closeModal,
+    openUploadModal,
     closeUploadModal,
     closeSuccessModal,
     handleFormSubmit,
@@ -454,6 +477,29 @@ loadRecipes();
     addStepRow,
     removeStep,
     previewImage,
+  });
+
+  // Kategória gomb és menü megjelenítése/elrejtése
+  const categoriesBtn = document.getElementById('categoriesBtn');
+  const categoryMenu = document.getElementById('categoryMenu');
+
+  if (categoriesBtn && categoryMenu) {
+    categoriesBtn.addEventListener('click', () => {
+      const isHidden = categoryMenu.style.display === 'none' || !categoryMenu.style.display;
+      categoryMenu.style.display = isHidden ? 'flex' : 'none';
+    });
+  }
+
+  // Kategória szűrő gombok eseménykezelői
+  document.querySelectorAll('.cat-filter-btn').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      document.querySelectorAll('.cat-filter-btn').forEach((btn) => btn.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+
+      const selectedCategory = e.currentTarget.getAttribute('data-category');
+      activeCategory = selectedCategory === 'all' ? 'Összes' : selectedCategory;
+      render();
+    });
   });
 
   const openBtn = $('openUploadBtn');
@@ -476,7 +522,6 @@ loadRecipes();
     }
   });
 
-  render();
+  // Alkalmazás indítása
   loadRecipes();
 })();
-
