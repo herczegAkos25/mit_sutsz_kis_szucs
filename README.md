@@ -28,8 +28,9 @@ Az alkalmazás futtatásához nincs szükség külön szerveri környezetre:
 1. **Klónozd a repository-t:**
    ```bash
    git clone [https://github.com/herczegAkos25/mit_sutsz_kis_szucs.git](https://github.com/herczegAkos25/mit_sutsz_kis_szucs.git)
-   Nyisd meg a projektet:```
-2. Keresd meg az index.html fájlt a gyökérkönyvtárban, és nyisd meg bármelyik böngészőben (Chrome, Firefox, Edge).
+   ```
+2. Nyisd meg a projektet:
+3. Keresd meg az index.html fájlt a gyökérkönyvtárban, és nyisd meg bármelyik böngészőben.
 
 ---
 
