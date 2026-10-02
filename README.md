@@ -50,3 +50,4 @@ Az alkalmazás futtatásához nincs szükség külön szerveri környezetre:
 ---
 
 Sósss süti
+Mitsutsz123
