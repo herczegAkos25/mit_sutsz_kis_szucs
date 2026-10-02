@@ -72,4 +72,30 @@ function readImageFile(file) {
     });
 }
 
+const categoriesBtn = document.getElementById('categoriesBtn');
+const categoryMenu = document.getElementById('categoryMenu');
+
+if (categoriesBtn && categoryMenu) {
+    categoriesBtn.addEventListener('click', () => {
+        const isHidden = categoryMenu.style.display === 'none';
+        categoryMenu.style.display = isHidden ? 'flex' : 'none';
+    });
+}
+
+document.querySelectorAll('.cat-filter-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        document.querySelectorAll('.cat-filter-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const selectedCategory = e.target.getAttribute('data-category');
+        
+        if (selectedCategory === 'all') {
+            renderRecipes(recipes);
+        } else {
+            const filtered = recipes.filter(r => r.category === selectedCategory);
+            renderRecipes(filtered);
+        }
+    });
+});
+
 loadRecipes();

@@ -9,18 +9,19 @@
 </head>
 <body>
     <nav>
-        <a href="#">Kategóriák</a>
+        <a href="#" id="categoriesBtn">Kategóriák</a>
         <a href="index.html" class="active">Mit sütsz&emsp; <br>&emsp;&emsp;&emsp; kis szűcs</a>
         <a href="#" id="openUploadBtn">Feltöltés</a>
 
-        <div id="categoryMenu" class="category-menu" style="display: none;">
-        <button class="cat-filter-btn active" data-category="all">Összes</button>
-        <button class="cat-filter-btn" data-category="Előétel / Leves">Előétel / Leves</button>
-        <button class="cat-filter-btn" data-category="Főétel">Főétel</button>
-        <button class="cat-filter-btn" data-category="Sütemény / Desszert">Sütemény / Desszert</button>
-        <button class="cat-filter-btn" data-category="Péksütemény">Péksütemény</button>
-        </div>
     </nav>
+    <div id="categoryMenu" class="category-menu" style="display: none;">
+    <button class="cat-filter-btn active" data-category="all">Összes</button>
+    <button class="cat-filter-btn" data-category="Előétel">Előétel</button>
+    <button class="cat-filter-btn" data-category="Leves">Leves</button>
+    <button class="cat-filter-btn" data-category="Főétel">Főétel</button>
+    <button class="cat-filter-btn" data-category="Desszert">Sütemény / Desszert</button>
+    <button class="cat-filter-btn" data-category="Péksütemény">Péksütemény</button>
+    </div>
 
     <div id="container"></div>
 
@@ -47,10 +48,11 @@
                             <label for="category">Kategória *</label>
                             <select id="category" required>
                                 <option value="" disabled selected>Válassz kategóriát...</option>
-                                <option value="Előétel / Leves">Előétel / Leves</option>
+                                <option value="Előétel">Előétel</option>
+                                <option value="Leves">Leves</option>
                                 <option value="Főétel">Főétel</option>
-                                <option value="Sütemény / Desszert">Sütemény / Desszert</option>
-                                <option value="Péksütemény / Kenyér">Péksütemény</option>
+                                <option value="Desszert">Sütemény / Desszert</option>
+                                <option value="Péksütemény">Péksütemény</option>
                             </select>
                         </div>
 
