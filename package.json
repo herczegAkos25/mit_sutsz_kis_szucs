@@ -1,12 +1,11 @@
 {
   "name": "mit-sutsz-kis-szucs",
+  "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "dependencies": {
-    "@netlify/database": "^1.1.0",
-    "drizzle-orm": "^1.0.0-beta.22"
+  "scripts": {
+    "dev": "netlify dev"
   },
-  "devDependencies": {
-    "drizzle-kit": "^1.0.0-beta.22"
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
   }
 }
