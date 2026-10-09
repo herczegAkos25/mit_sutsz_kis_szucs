@@ -52,7 +52,6 @@ nav > a:hover {
 
 .brand-logo:hover{
   background: none;
-  color: none;
 }
 
 /* --- RECEPTEK FŐ KONTÉNERE --- */
@@ -174,40 +173,6 @@ nav > a:hover {
     padding: 3px 8px;
     border-radius: 6px;
     font-weight: 500;
-}
-
-.rc-details {
-    margin-top: 10px;
-    border-top: 1px solid #e5e7eb;
-    padding-top: 10px;
-}
-
-.rc-details summary {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--primary);
-    cursor: pointer;
-    user-select: none;
-}
-
-.rc-details summary:hover {
-    color: var(--primary-hover);
-}
-
-.rc-details h4 {
-    margin: 12px 0 6px 0;
-    font-size: 0.95rem;
-}
-
-.rc-details ul, .rc-details ol {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 0.85rem;
-    color: #374151;
-}
-
-.rc-details li {
-    margin-bottom: 4px;
 }
 
 /* ==========================================

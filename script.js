@@ -5,7 +5,6 @@
   const configured = cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY && !/IDE_/.test(cfg.SUPABASE_URL + cfg.SUPABASE_ANON_KEY);
   const sb = configured && window.supabase ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY) : null;
   const BUCKET = 'recipe-images';
-  const SEED_URL = 'db/seed-recipes.json';
   const CATEGORIES = ['Főétel', 'Desszert', 'Leves', 'Péksütemény'];
   const MAX_IMAGE_SIDE = 900;
   const MAX_FILE_BYTES = 10 * 1024 * 1024;
@@ -59,11 +58,9 @@
   /* ---------- receptek betöltése és megjelenítése ---------- */
 
   const mapRow = (r) => ({
-    id: r.external_id,
     title: r.title,
     description: r.description || '',
     category: r.category,
-    cuisine: r.cuisine || '',
     prepTime: r.prep_time_minutes,
     cookTime: r.cook_time_minutes,
     servings: r.servings,
@@ -73,12 +70,6 @@
     ingredients: r.ingredients || [],
     instructions: r.instructions || [],
   });
-
-  async function loadSeed() {
-    const res = await fetch(SEED_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return res.json();
-  }
 
   async function loadRecipes() {
     loadError = '';
@@ -93,14 +84,8 @@
       recipes = data.map(mapRow);
     } catch (err) {
       console.error('Supabase betöltés sikertelen:', err);
-      try {
-        recipes = await loadSeed();
-        loadError = 'Az adatbázis nem érhető el, csak az alap receptek látszanak (feltöltés ilyenkor nem működik).';
-      } catch (e2) {
-        console.error(e2);
-        recipes = [];
-        loadError = 'A receptek betöltése nem sikerült.';
-      }
+      recipes = [];
+      loadError = 'A receptek betöltése nem sikerült.';
     }
     render();
   }
@@ -195,7 +180,6 @@
       body.appendChild(tags);
     }
 
-    // A régi <details> helyett egy tiszta gomb, ami megnyitja a modal-t
     const btn = h('button', 'btn btn-primary btn-details', 'Recept megtekintése');
     btn.type = 'button';
     btn.addEventListener('click', () => openRecipeModal(r));
@@ -210,7 +194,6 @@
     const wrap = h('div', 'rc-wrap');
 
     const bar = h('div', 'rc-filters');
-    bar.id = 'categoryBar';
     ['Összes', ...new Set([...CATEGORIES, ...recipes.map((r) => r.category)])].forEach((cat) => {
       const btn = h('button', 'rc-chip' + (cat === activeCategory ? ' is-active' : ''), cat);
       btn.type = 'button';
@@ -466,9 +449,6 @@
   // Globális hívhatóság az HTML inline attribútumokhoz (onclick, onsubmit, stb.)
   Object.assign(window, {
     closeRecipeModal,
-    openModal,
-    closeModal,
-    openUploadModal,
     closeUploadModal,
     closeSuccessModal,
     handleFormSubmit,
@@ -477,29 +457,6 @@
     addStepRow,
     removeStep,
     previewImage,
-  });
-
-  // Kategória gomb és menü megjelenítése/elrejtése
-  const categoriesBtn = document.getElementById('categoriesBtn');
-  const categoryMenu = document.getElementById('categoryMenu');
-
-  if (categoriesBtn && categoryMenu) {
-    categoriesBtn.addEventListener('click', () => {
-      const isHidden = categoryMenu.style.display === 'none' || !categoryMenu.style.display;
-      categoryMenu.style.display = isHidden ? 'flex' : 'none';
-    });
-  }
-
-  // Kategória szűrő gombok eseménykezelői
-  document.querySelectorAll('.cat-filter-btn').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      document.querySelectorAll('.cat-filter-btn').forEach((btn) => btn.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-
-      const selectedCategory = e.currentTarget.getAttribute('data-category');
-      activeCategory = selectedCategory === 'all' ? 'Összes' : selectedCategory;
-      render();
-    });
   });
 
   const openBtn = $('openUploadBtn');
